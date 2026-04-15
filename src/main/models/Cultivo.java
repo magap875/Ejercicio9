@@ -21,10 +21,10 @@ public class Cultivo {
     @Column(nullable = false)
     private String tipoGrano;
 
-
     //relacion uno a muchos con siembra
     @OneToMany(mappedBy = "cultivo", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Siembra> siembra;
+    @Builder.Default
+    private List<Siembra> siembras = new ArrayList<>();
 }

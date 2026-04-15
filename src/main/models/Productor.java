@@ -32,5 +32,6 @@ public class Productor {
     @OneToMany(mappedBy = "productor", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Campo> campos;
+    @Builder.Default
+    private List<Campo> campos = new ArrayList<>();
 }

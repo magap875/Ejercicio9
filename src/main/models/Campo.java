@@ -22,7 +22,7 @@ public class Campo {
 
     //relacion dueña con productor - 1 a muchos
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "productor_id")
+    @JoinColumn(name = "productor_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Productor productor;
@@ -31,5 +31,6 @@ public class Campo {
     @OneToMany(mappedBy = "campo", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Lote> lotes;
+    @Builder.Default
+    private List<Lote> lotes = new ArrayList<>();
 }

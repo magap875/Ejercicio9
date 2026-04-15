@@ -23,9 +23,8 @@ public class Suelo {
 
     //relacion con lote
     @OneToMany(mappedBy = "suelo", fetch = FetchType.LAZY)
-
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-
-    private List<Lote> lotes;
+    @Builder.Default
+    private List<Lote> lotes = new ArrayList<>();
 }

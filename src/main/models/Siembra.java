@@ -25,14 +25,14 @@ public class Siembra {
 
     // relacion muchos a 1 con lote
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "lote_id")
+    @JoinColumn(name = "lote_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Lote lote;
 
     // relacion muchos a 1 con cultivo
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "cultivo_id")
+    @JoinColumn(name = "cultivo_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Cultivo cultivo;
@@ -42,5 +42,6 @@ public class Siembra {
     @JoinTable(name = "siembraXagroquimico", joinColumns = @JoinColumn(name = "siembra_id"), inverseJoinColumns = @JoinColumn(name = "agroquimico_id"))
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Agroquimico> agroquimicos;
+    @Builder.Default
+    private List<Agroquimico> agroquimicos = new ArrayList<>();
 }

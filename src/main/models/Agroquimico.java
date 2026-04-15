@@ -25,5 +25,6 @@ public class Agroquimico {
     @ManyToMany(mappedBy = "agroquimicos")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Siembra> siembras;
+    @Builder.Default
+    private List<Siembra> siembras = new ArrayList<>();
 }

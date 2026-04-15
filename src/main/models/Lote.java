@@ -23,14 +23,14 @@ public class Lote {
 
     // rela muchos a uno con campo
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "campo_id")
+    @JoinColumn(name = "campo_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Campo campo;
 
     //rela muchos a uno con suelo
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "suelo_id")
+    @JoinColumn(name = "suelo_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Suelo suelo;
@@ -39,5 +39,6 @@ public class Lote {
     @OneToMany(mappedBy = "lote", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Siembra> siembra;
+    @Builder.Default
+    private List<Siembra> siembras = new ArrayList<>();
 }
